@@ -84,5 +84,42 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
+
+        if (true){
+            try {
+                CloseableHttpClient client1 =  HttpClients.createDefault();
+                URI uri1 = new URIBuilder("https://app.seker.live/fm1/answer-file")
+                        .setParameter("magic", null)
+                        .setParameter("question", "1")
+                        .setParameter("answer", "2")
+                        .build();
+                HttpPost request1 = new HttpPost(uri1);
+                CloseableHttpResponse response = client1.execute(request1);
+                String json1 = EntityUtils.toString(response.getEntity()); // מדפיס את הגייסון שנוצר מבקשות האפיאי
+                System.out.println(json1);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                CloseableHttpClient client2 =  HttpClients.createDefault();
+                URI uri2 = new URIBuilder("https://app.seker.live/fm1/answer-file")
+                        .setParameter("magic", "")
+                        .setParameter("red", "1")
+                        .setParameter("green", "@")
+                        .setParameter("blue", "3")
+                        .build();
+                HttpPost request = new HttpPost(uri2);
+                CloseableHttpResponse response = client2.execute(request);
+                String json2 = EntityUtils.toString(response.getEntity()); // מדפיס את הגייסון שנוצר מבקשות האפיאי
+                System.out.println(json2);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
